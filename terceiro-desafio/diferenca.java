@@ -2,15 +2,29 @@ import java.util.Scanner;
 
 public class diferenca {
     public static void main(String[] args) {
-        int size, target;
+        int size, target, index, count;
         Scanner input = new Scanner(System.in);
 
 
-        size = Integer.parseInt(input.next());
-        target = Integer.parseInt(input.next());
+        size = input.nextInt();
+        target = input.nextInt();
+        input.nextLine();
+        int[] array = new int[size];
+        index = 0;
+        while (index < size) {
+            array[index] = input.nextInt();
+            index++;
+        }
+        input.close();
 
-
-        System.out.println("tamanho do array: " + size);
-        System.out.println("Valor alvo: " + target);
+        count = 0;
+        for (int i = 0; i < size-1; i ++) {
+           for (int j = i+1; j < size; j++) {
+                if (Math.abs(array[i] - array[j]) == target) {
+                    count++;
+                }
+           }
+        }
+        System.out.println(count);
     }    
 }
